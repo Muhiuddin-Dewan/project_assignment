@@ -1,5 +1,4 @@
 # project_assignment 
-## Task-1
 ### Installing Process:
 #### Docker:
 Set up Docker's apt repository:
@@ -80,3 +79,5 @@ sudo install kubectl /usr/local/bin/kubectl
 
 kubectl version --client -o json
 ```
+![check_by_command](/images/image1.PNG)
+
