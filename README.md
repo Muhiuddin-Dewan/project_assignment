@@ -62,6 +62,9 @@ below command:
         $ docker exec -it container_it/bin/bash
         You can find the password on the "/var/jenkins_home/secrets/" directory.
 ```
+
+![Jenkins_brower](/images/image2.PNG)
+
 ##### Install minikube and Kubectl
 Install minikube:
 ```
