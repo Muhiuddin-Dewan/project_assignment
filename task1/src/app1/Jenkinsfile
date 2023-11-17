@@ -14,7 +14,7 @@ pipeline {
             steps {
                 // Push App 1 Docker Image to DockerHub
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dewan11415-dockerhub') {
+                    docker.withRegistry('registry.hub.docker.com', 'dewan11415-dockerhub') {
                         docker.image("dewan11415/app1:latest").push()
                     }
                 }
