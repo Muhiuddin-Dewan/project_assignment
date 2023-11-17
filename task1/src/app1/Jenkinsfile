@@ -4,16 +4,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Build App 1 Docker Image
                 script {
+                    echo "Building Docker Image..."
                     docker.build("dewan11415/app1:latest", ".")
                 }
             }
         }
         stage('Push to DockerHub') {
             steps {
-                // Push App 1 Docker Image to DockerHub
                 script {
+                    echo "Pushing Docker Image to DockerHub..."
                     docker.withRegistry('registry.hub.docker.com', 'dewan11415-dockerhub') {
                         docker.image("dewan11415/app1:latest").push()
                     }
@@ -22,4 +22,5 @@ pipeline {
         }
     }
 }
+
 
