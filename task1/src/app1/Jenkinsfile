@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Build App 1 Docker Image
                 script {
-                    docker.build("dewan11415/app1:latest", "./src/app1")
+                    docker.build("dewan11415/app1:latest", ".")
                 }
             }
         }
