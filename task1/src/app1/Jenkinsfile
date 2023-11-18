@@ -1,26 +1,32 @@
 pipeline {
-    agent any
-    
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    echo "Building Docker Image..."
-                    docker.build("dewan11415/app1:latest", ".")
-                }
-            }
-        }
-        stage('Push to DockerHub') {
-            steps {
-                script {
-                    echo "Pushing Docker Image to DockerHub..."
-                    docker.withRegistry('registry.hub.docker.com', 'dewan11415-dockerhub') {
-                        docker.image("dewan11415/app1:latest").push()
-                    }
-                }
-            }
-        }
+  agent any
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+  }
+  environment {
+    DOCKERHUB_CREDENTIALS = credentials('dewan-11415')
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'cd /app-1/task1/src/app1/'
+        sh 'docker build -t dewan11415/app1:latest .'
+      }
     }
+    stage('Login') {
+      steps {
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      }
+    }
+    stage('Push') {
+      steps {
+        sh 'docker push dewan11415/app1:latest'
+      }
+    }
+  }
+  post {
+    always {
+      sh 'docker logout'
+    }
+  }
 }
-
-
