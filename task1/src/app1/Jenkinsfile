@@ -7,6 +7,11 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('dewan11415-dockerhub')
   }
   stages {
+    stage('Check Location'){
+        steps {
+        sh 'pwd'
+      }
+    }
     stage('Build') {
       steps {
         sh 'docker build -t dewan11415/app1:latest .'
