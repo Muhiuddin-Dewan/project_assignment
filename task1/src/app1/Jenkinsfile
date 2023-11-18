@@ -4,7 +4,7 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('dewan-11415')
+    DOCKERHUB_CREDENTIALS = credentials('dewan11415-dockerhub')
   }
   stages {
     stage('Build') {
