@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Check Location'){
         steps {
-        sh 'pwd'
+        sh 'cd task1/src/app1/'
       }
     }
     stage('Build') {
