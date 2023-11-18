@@ -23,43 +23,36 @@ Install Docker Packages:
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
 ```
 #### Jenkins:
-Install Jenkins using docker-compose:
+Install Jenkins Installation:
 
-Step-1: Create a directory "Jenkins_Installation"
-
-Step-2: Create "docker-compose.yaml" under the directory
-
-Step-3: Run Docker compose file by using docker-compose up -d 
-##### docker-compose.yml
+Step-1: First install Java
 ```
-version: '3'
+sudo apt install openjdk-11-jdk -y
 
-services:
+```
 
-  jenkins:
-  
-    image: jenkins/jenkins
-    
-    ports:
-    
-      - "8080:8080"
-      
-    volumes:
-    
-      - jenkins-data:/var/jenkins_home
-      
-volumes:
+Step-2: Installing Jenkins
+```
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
 
-  jenkins-data:
-  
-    driver: local
-```    
+sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+sudo apt update
+
+sudo apt install jenkins
+```
+
+Step-3: Now start Jenkins service
+```
+sudo systemctl start jenkins.service
+```
+
 Step-4: You can now access Jenkins from the browser
 
-Step-5: You have to provide initial credentials of your jenkins. For this you have to login to the container like
+Step-5: You have to provide initial credentials of your jenkins. 
+
 below command:
 ```
-        $ docker exec -it container_it/bin/bash
         You can find the password on the "/var/jenkins_home/secrets/" directory.
 ```
 
