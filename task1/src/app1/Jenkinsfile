@@ -9,9 +9,9 @@ pipeline {
   stages {
     stage('Check Location'){
         steps {
-        sh 'cd task1/src/app1/'
+        sh '/var/lib/jenkins/workspace/app-1/task1/src/app1'
         sh 'pwd'
-        sh 'll'
+        sh 'ls'
       }
     }
     stage('Build') {
