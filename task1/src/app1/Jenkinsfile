@@ -9,7 +9,6 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'cd /app-1/task1/src/app1/'
         sh 'docker build -t dewan11415/app1:latest .'
       }
     }
